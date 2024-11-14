@@ -23,3 +23,12 @@ class Client
                 Console.WriteLine("Connected to server!");
 
                 bool running = true;
+                while (running)
+                {
+                    Console.WriteLine("\nChoose an operation:");
+                    Console.WriteLine("1: LIST_FILES");
+                    Console.WriteLine("2: READ_FILE");
+                    Console.WriteLine("3: WRITE_FILE");
+                    Console.WriteLine("4: EXECUTE");
+                    Console.WriteLine("5: EXIT");
+                    string choice = Console.ReadLine();
