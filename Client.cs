@@ -17,3 +17,9 @@ class Client
             {
                 Console.Write("Enter your name: ");
                 string clientName = Console.ReadLine();
+
+                // Send the client name to the server
+                writer.WriteLine(clientName);
+                Console.WriteLine("Connected to server!");
+
+                bool running = true;
