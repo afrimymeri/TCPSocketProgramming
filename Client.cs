@@ -32,3 +32,15 @@ class Client
                     Console.WriteLine("4: EXECUTE");
                     Console.WriteLine("5: EXIT");
                     string choice = Console.ReadLine();
+
+                    switch (choice)
+                    {
+                        case "1": // LIST_FILES
+                            writer.WriteLine("LIST_FILES");
+                            Console.WriteLine("Files on server:");
+                            string response;
+                            while ((response = reader.ReadLine()) != "END_OF_LIST")
+                            {
+                                Console.WriteLine(response);
+                            }
+                            break;
