@@ -30,7 +30,8 @@ class Client
                     Console.WriteLine("2: READ_FILE");
                     Console.WriteLine("3: WRITE_FILE");
                     Console.WriteLine("4: EXECUTE");
-                    Console.WriteLine("5: EXIT");
+                    Console.WriteLine("5: SEND_MESSAGE");
+                    Console.WriteLine("6: EXIT");
                     string choice = Console.ReadLine();
 
                     switch (choice)
@@ -44,3 +45,13 @@ class Client
                                 Console.WriteLine(response);
                             }
                             break;
+
+                        case "2": // READ_FILE
+                            Console.Write("Enter the file name to read: ");
+                            string fileNameToRead = Console.ReadLine();
+                            writer.WriteLine("READ_FILE " + fileNameToRead);
+
+                            string fileContent = reader.ReadLine();
+                            Console.WriteLine("File content: " + fileContent);
+                            break;
+                        
