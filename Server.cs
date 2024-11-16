@@ -82,3 +82,21 @@ class Server
                     writer.WriteLine("File not found.");
                 }
             }
+            else if (request.StartsWith("WRITE_FILE") && hasWriteExecutePrivileges)
+            {
+                string[] parts = request.Split(new[] { ' ' }, 3);
+                string fileName = parts[1];
+                string fileContent = parts[2];
+
+                string filePath = Path.Combine(serverDirectory, fileName);
+
+                try
+                {
+                    File.AppendAllText(filePath, fileContent + Environment.NewLine);
+                    writer.WriteLine("Content was written to the file successfully.");
+                }
+                catch (Exception ex)
+                {
+                    writer.WriteLine("Failed to write to file: " + ex.Message);
+                }
+            }
