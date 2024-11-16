@@ -65,3 +65,17 @@ class Client
                             string writeResponse = reader.ReadLine();
                             Console.WriteLine("Server response: " + writeResponse);
                             break;
+
+                        case "4": // EXECUTE
+                            Console.Write("Enter the command to execute: ");
+                            string command = Console.ReadLine();
+                            writer.WriteLine($"EXECUTE {command}");
+
+                            Console.WriteLine("Command output:");
+                            string commandOutput;
+                            while ((commandOutput = reader.ReadLine()) != null && commandOutput != "END_OF_COMMAND")
+                            {
+                                Console.WriteLine(commandOutput);
+                            }
+                            break;
+
