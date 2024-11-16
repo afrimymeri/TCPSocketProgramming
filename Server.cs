@@ -65,4 +65,20 @@ class Server
                         writer.WriteLine(Path.GetFileName(file)); // Send only the file name
                     }
                     writer.WriteLine("END_OF_LIST");
+                }else
+                    {
+                    writer.WriteLine("Directory not found.");
+                    }
+            }
+            else if (request.StartsWith("READ_FILE"))
+            {
+                string filePath = Path.Combine(serverDirectory, request.Split(' ')[1]);
+                if (File.Exists(filePath))
+                {
+                    writer.WriteLine(File.ReadAllText(filePath));
                 }
+                else
+                {
+                    writer.WriteLine("File not found.");
+                }
+            }
