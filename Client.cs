@@ -54,4 +54,14 @@ class Client
                             string fileContent = reader.ReadLine();
                             Console.WriteLine("File content: " + fileContent);
                             break;
-                        
+
+                        case "3": // WRITE_FILE
+                            Console.Write("Enter the file name to write: ");
+                            string fileNameToWrite = Console.ReadLine();
+                            Console.Write("Enter the content to write: ");
+                            string contentToWrite = Console.ReadLine();
+                            writer.WriteLine($"WRITE_FILE {fileNameToWrite} {contentToWrite}");
+
+                            string writeResponse = reader.ReadLine();
+                            Console.WriteLine("Server response: " + writeResponse);
+                            break;
