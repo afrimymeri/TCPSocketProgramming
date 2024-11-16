@@ -94,3 +94,11 @@ class Client
                             writer.WriteLine("EXIT");
                             break;
 
+                        default:
+                            Console.WriteLine("Invalid choice.");
+                            break;
+                    }
+                }
+            }
+        }
+
