@@ -65,4 +65,70 @@ class Server
                         writer.WriteLine(Path.GetFileName(file)); // Send only the file name
                     }
                     writer.WriteLine("END_OF_LIST");
+                }else
+                    {
+                    writer.WriteLine("Directory not found.");
+                    }
+            }
+            else if (request.StartsWith("READ_FILE"))
+            {
+                string filePath = Path.Combine(serverDirectory, request.Split(' ')[1]);
+                if (File.Exists(filePath))
+                {
+                    writer.WriteLine(File.ReadAllText(filePath));
                 }
+                else
+                {
+                    writer.WriteLine("File not found.");
+                }
+            }
+            else if (request.StartsWith("WRITE_FILE") && hasWriteExecutePrivileges)
+            {
+                string[] parts = request.Split(new[] { ' ' }, 3);
+                string fileName = parts[1];
+                string fileContent = parts[2];
+
+                string filePath = Path.Combine(serverDirectory, fileName);
+
+                try
+                {
+                    File.AppendAllText(filePath, fileContent + Environment.NewLine);
+                    writer.WriteLine("Content was written to the file successfully.");
+                }
+                catch (Exception ex)
+                {
+                    writer.WriteLine("Failed to write to file: " + ex.Message);
+                }
+            }
+            else if (request.StartsWith("EXECUTE") && hasWriteExecutePrivileges)
+            {
+                string command = request.Split(' ')[1];
+
+                ProcessStartInfo processInfo = new ProcessStartInfo("cmd.exe", "/c " + command)
+                {
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using (Process process = Process.Start(processInfo))
+                {
+                    string output = process.StandardOutput.ReadToEnd();
+                    process.WaitForExit();
+                    writer.WriteLine(output);
+                }
+            }
+            else
+            {
+                writer.WriteLine("Permission denied or invalid command.");
+            }
+        }
+        Console.WriteLine($"Client ({clientName}) disconnected.");
+        client.Close();
+    }
+
+    private static bool CheckPrivileges(string clientIP)
+    {
+        return clientIP == "172.20.10.2";
+    }
+}
