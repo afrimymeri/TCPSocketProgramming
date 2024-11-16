@@ -79,3 +79,12 @@ class Client
                             }
                             break;
 
+                        case "5": // SEND_MESSAGE
+                            Console.Write("Enter the message to send to the server: ");
+                            string message = Console.ReadLine();
+                            writer.WriteLine($"MESSAGE {message}");
+
+                            string serverReply = reader.ReadLine();
+                            Console.WriteLine("Server reply: " + serverReply);
+                            break;
+
