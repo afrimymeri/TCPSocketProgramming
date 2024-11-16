@@ -88,3 +88,9 @@ class Client
                             Console.WriteLine("Server reply: " + serverReply);
                             break;
 
+                        case "6": // EXIT
+                            Console.WriteLine("Exiting client...");
+                            running = false;
+                            writer.WriteLine("EXIT");
+                            break;
+
