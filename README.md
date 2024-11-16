@@ -1,4 +1,4 @@
 
-Universiteti i Prishtinës 'Hasan Prishtina'
-Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike
+Universiteti i PrishtinÃ«s 'Hasan Prishtina'
+Fakulteti i InxhinierisÃ« Elektrike dhe Kompjuterike
 Departamenti: Inxhinieri Kompjuterike dhe Softuerike
