@@ -100,3 +100,35 @@ class Server
                     writer.WriteLine("Failed to write to file: " + ex.Message);
                 }
             }
+            else if (request.StartsWith("EXECUTE") && hasWriteExecutePrivileges)
+            {
+                string command = request.Split(' ')[1];
+
+                ProcessStartInfo processInfo = new ProcessStartInfo("cmd.exe", "/c " + command)
+                {
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using (Process process = Process.Start(processInfo))
+                {
+                    string output = process.StandardOutput.ReadToEnd();
+                    process.WaitForExit();
+                    writer.WriteLine(output);
+                }
+            }
+            else
+            {
+                writer.WriteLine("Permission denied or invalid command.");
+            }
+        }
+        Console.WriteLine($"Client ({clientName}) disconnected.");
+        client.Close();
+    }
+
+    private static bool CheckPrivileges(string clientIP)
+    {
+        return clientIP == "172.20.10.2";
+    }
+}
