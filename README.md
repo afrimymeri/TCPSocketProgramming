@@ -12,14 +12,16 @@ Projekt nga lënda "Rrjeta Kompjuterike".
 * [Albin Shala](https://github.com/albinshala)
 
 # Asistenti i lëndës
-Mërgim Hoti
+Dr. Sc. Mergim H. Hoti.
 
 # Project Description
 Sistemi lejon klientët të lidhen me serverin, të ndërveprojnë me skedarët në server, të ekzekutojnë komanda dhe të dërgojnë mesazhe. Ndërveprimi bazohet në një grup komandash të paracaktuara.
-* Serveri: 
+
+Serveri: 
 * Serveri funksionon si një shërbim qendror që pret klientët përmes një porti të caktuar (8081) dhe menaxhon kërkesat e tyre. Ai përdor TCPListener për të pranuar lidhjet dhe multithreading për të trajtuar shumë klientë njëkohësisht, pa ndërprerë funksionimin e përgjithshëm. Serveri ka një direktori të përbashkët (C:\SharedFolder) ku ruan skedarët për operacione si listim, lexim dhe shkrim. Gjithashtu, serveri përfshin një mekanizëm kontrolli të privilegjeve bazuar në IP-në e klientit, duke kufizuar operacionet kritike si shkrimi në skedarë dhe ekzekutimi i komandave vetëm për klientët e autorizuar. Çdo kërkesë nga klienti trajtohet me kujdes për të shmangur gabimet dhe për të siguruar një përgjigje të shpejtë dhe të saktë. Serveri poashtu përmban funksionin CheckPrivileges që kontrollon nëse një adresë IP e dhënë ka privilegje të veçanta për të kryer veprime të caktuara. Ky funksion përdor një listë të paracaktuar të adresave IP të privilegjuara dhe krahason adresën IP të klientit që jepet si parametër me këtë listë. Nëse IP-ja e klientit gjendet në listë, funksioni kthen true; përndryshe kthen false. Poashtu e përmban edhe mundësine që dy IP address-a të jenë admin.
-* Klienti: 
-* Klienti vepron si një ndërfaqe interaktive që i lejon përdoruesit të lidhen me serverin dhe të kryejnë operacione të ndryshme. Ai përdor TcpClient për të krijuar një lidhje me serverin dhe për të komunikuar me të përmes komandave. Pasi të lidhet, klienti ofron një menu të thjeshtë që mbështet operacione si listimi i skedarëve, leximi i përmbajtjes së një skedari, shkrimi i përmbajtjes në një skedar, ekzekutimi i komandave, dhe dërgimi i mesazheve. Për përdoruesin e zakonshëm, klienti është i lehtë për t'u përdorur, ndërsa ruan një nivel të lartë fleksibiliteti për kërkesa më komplekse. Komunikimi me serverin është i sigurt dhe gabimet trajtohen në mënyrë që të mos ndërpritet ndërveprimi. 
+  
+Klienti: 
+* Klienti vepron si një ndërfaqe interaktive që i lejon përdoruesit të lidhen me serverin dhe të kryejnë operacione të ndryshme. Ai përdor TcpClient për të krijuar një lidhje me serverin dhe për të komunikuar me të përmes komandave. Pasi të lidhet, klienti ofron një menu të thjeshtë që mbështet operacione si listimi i skedarëve, leximi i përmbajtjes së një skedari, shkrimi i përmbajtjes në një skedar, ekzekutimi i komandave, dhe dërgimi i mesazheve. Për përdoruesin e zakonshëm, klienti është i lehtë për t'u përdorur, ndërsa ruan një nivel të lartë fleksibiliteti për kërkesa më komplekse. Komunikimi me serverin është i sigurt dhe gabimet trajtohen në mënyrë që të mos ndërpritet ndërveprimi. Implementimi është flexible dhe trajton gabimet për të ruajtur stabilitetin e komunikimit.
 
 # Si të Përdoret
 Serveri: 
