@@ -6,10 +6,10 @@
 Projekt nga lënda "Rrjeta Kompjuterike".
 
 # Contributors 
-* Agnesa Rama
-* Afrim Ymeri
-* Agnesa Mani
-* Albin Shala
+* [Agnesa Rama](https://github.com/agnesarama1)
+* [Afrim Ymeri](https://github.com/afrimymeri)
+* [Agnesa Mani](https://github.com/Agnesamani)
+* [Albin Shala](https://github.com/albinshala)
 
 # Asistenti i lëndës
 Mërgim Hoti
