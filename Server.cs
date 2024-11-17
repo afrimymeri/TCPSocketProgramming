@@ -57,7 +57,14 @@ class Server
 
             Console.WriteLine($"Received from {clientName}: {request}");
 
-            if (request.StartsWith("LIST_FILES"))
+
+            if (request.StartsWith("MESSAGE"))
+            {
+                string message = request.Substring("MESSAGE".Length).Trim();
+                Console.WriteLine($"Message from {clientName}: {message}");
+                writer.WriteLine("Message received.");
+            }
+            else if (request.StartsWith("LIST_FILES"))
             {
                 if (Directory.Exists(serverDirectory))
                 {
@@ -74,10 +81,20 @@ class Server
             }
             else if (request.StartsWith("READ_FILE"))
             {
-                string filePath = Path.Combine(serverDirectory, request.Split(' ')[1]);
+                string fileName = request.Split(' ')[1];
+                string filePath = Path.Combine(serverDirectory, fileName);
+
                 if (File.Exists(filePath))
                 {
-                    writer.WriteLine(File.ReadAllText(filePath));
+                    using (StreamReader fileReader = new StreamReader(filePath))
+                    {
+                        string line;
+                        while ((line = fileReader.ReadLine()) != null)
+                        {
+                            writer.WriteLine(line);
+                        }
+                    }
+                    writer.WriteLine("END_OF_FILE");
                 }
                 else
                 {
