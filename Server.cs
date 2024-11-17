@@ -40,7 +40,7 @@ class Server
         bool hasWriteExecutePrivileges = CheckPrivileges(clientIP);
         Console.WriteLine($"Client ({clientName}) connected with IP: {clientIP}");
         // Debug log to check if privileges match the IP
-        if (clientIP == "192.168.1.166")
+        if (CheckPrivileges(clientIP))
         {
             Console.WriteLine("Debug: Privileged client IP detected.");
         }
@@ -131,8 +131,14 @@ class Server
         client.Close();
     }
 
+
     private static bool CheckPrivileges(string clientIP)
     {
-        // var privilegedIPs = new List<string> 
+        var privilegedIps = new List<string> {
+            "192.168.1.11",
+            "192.168.1.12"
+        };
+
+        return privilegedIps.Contains(clientIP);
     }
 }
