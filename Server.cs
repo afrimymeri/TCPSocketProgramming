@@ -44,10 +44,12 @@ class Server
         {
             Console.WriteLine("Debug: Privileged client IP detected.");
         }
+
         else
         {
             Console.WriteLine("Debug: Non-privileged client IP detected.");
         }
+
         while (true)
         {
             string request = reader.ReadLine();
@@ -95,11 +97,13 @@ class Server
                     File.AppendAllText(filePath, fileContent + Environment.NewLine);
                     writer.WriteLine("Content was written to the file successfully.");
                 }
+
                 catch (Exception ex)
                 {
                     writer.WriteLine("Failed to write to file: " + ex.Message);
                 }
             }
+
             else if (request.StartsWith("EXECUTE") && hasWriteExecutePrivileges)
             {
                 string command = request.Split(' ')[1];
@@ -129,6 +133,6 @@ class Server
 
     private static bool CheckPrivileges(string clientIP)
     {
-        return clientIP == "172.20.10.2";
+        // var privilegedIPs = new List<string> 
     }
 }

@@ -51,8 +51,12 @@ class Client
                             string fileNameToRead = Console.ReadLine();
                             writer.WriteLine("READ_FILE " + fileNameToRead);
 
-                            string fileContent = reader.ReadLine();
-                            Console.WriteLine("File content: " + fileContent);
+                            Console.WriteLine("File content:");
+                            string line;
+                            while ((line = reader.ReadLine()) != null && line != "END_OF_FILE")
+                            {
+                                Console.WriteLine(line);
+                            }
                             break;
 
                         case "3": // WRITE_FILE
