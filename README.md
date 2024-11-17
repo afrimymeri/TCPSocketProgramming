@@ -17,7 +17,7 @@ Mërgim Hoti
 # Project Description
 Sistemi lejon klientët të lidhen me serverin, të ndërveprojnë me skedarët në server, të ekzekutojnë komanda dhe të dërgojnë mesazhe. Ndërveprimi bazohet në një grup komandash të paracaktuara.
 * Serveri: 
-* Serveri funksionon si një shërbim qendror që pret klientët përmes një porti të caktuar (8081) dhe menaxhon kërkesat e tyre. Ai përdor TcpListener për të pranuar lidhjet dhe multithreading për të trajtuar shumë klientë njëkohësisht, pa ndërprerë funksionimin e përgjithshëm. Serveri ka një direktori të përbashkët (C:\SharedFolder) ku ruan skedarët për operacione si listim, lexim dhe shkrim. Gjithashtu, serveri përfshin një mekanizëm kontrolli të privilegjeve bazuar në IP-në e klientit, duke kufizuar operacionet kritike si shkrimi në skedarë dhe ekzekutimi i komandave vetëm për klientët e autorizuar. Çdo kërkesë nga klienti trajtohet me kujdes për të shmangur gabimet dhe për të siguruar një përgjigje të shpejtë dhe të saktë.
+* Serveri funksionon si një shërbim qendror që pret klientët përmes një porti të caktuar (8081) dhe menaxhon kërkesat e tyre. Ai përdor TCPListener për të pranuar lidhjet dhe multithreading për të trajtuar shumë klientë njëkohësisht, pa ndërprerë funksionimin e përgjithshëm. Serveri ka një direktori të përbashkët (C:\SharedFolder) ku ruan skedarët për operacione si listim, lexim dhe shkrim. Gjithashtu, serveri përfshin një mekanizëm kontrolli të privilegjeve bazuar në IP-në e klientit, duke kufizuar operacionet kritike si shkrimi në skedarë dhe ekzekutimi i komandave vetëm për klientët e autorizuar. Çdo kërkesë nga klienti trajtohet me kujdes për të shmangur gabimet dhe për të siguruar një përgjigje të shpejtë dhe të saktë.
 * Klienti: 
 * Klienti vepron si një ndërfaqe interaktive që i lejon përdoruesit të lidhen me serverin dhe të kryejnë operacione të ndryshme. Ai përdor TcpClient për të krijuar një lidhje me serverin dhe për të komunikuar me të përmes komandave. Pasi të lidhet, klienti ofron një menu të thjeshtë që mbështet operacione si listimi i skedarëve, leximi i përmbajtjes së një skedari, shkrimi i përmbajtjes në një skedar, ekzekutimi i komandave, dhe dërgimi i mesazheve. Për përdoruesin e zakonshëm, klienti është i lehtë për t'u përdorur, ndërsa ruan një nivel të lartë fleksibiliteti për kërkesa më komplekse. Komunikimi me serverin është i sigurt dhe gabimet trajtohen në mënyrë që të mos ndërpritet ndërveprimi.
 
@@ -25,7 +25,7 @@ Sistemi lejon klientët të lidhen me serverin, të ndërveprojnë me skedarët 
 Serveri: 
 * Hapni projektin Server.cs dhe ekzekutoni atë.
 * Serveri do të nisë në portin 8081 dhe do të presë lidhjet nga klientët.
-* Sigurohuni që direktoria C:\SharedFolder ekziston në sistemin tuaj.
+* Sigurohuni që direktoria C:\SharedFolder ekziston në sistemin tuaj dhe keni file me content brenda për të pasur mundësi t'i ekzekutoni komandat.
 
 Klienti: 
 * Hapni projektin Client.cs dhe ekzekutoni atë.
